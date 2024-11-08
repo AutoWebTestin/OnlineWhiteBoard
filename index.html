@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Whiteboard - Teaching Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Online Whiteboard</h1>
+            <p>Use this board for teaching or collaborative work!</p>
+        </header>
+
+        <!-- Tools section -->
+        <div class="tools">
+            <button id="penTool">Pen</button>
+            <button id="eraserTool">Eraser</button>
+            <button id="clearButton">Clear</button>
+            <button id="saveButton">Save Image</button>
+
+            <label for="colorPicker">Color:</label>
+            <input type="color" id="colorPicker" value="#000000">
+
+            <label for="brushSize">Size:</label>
+            <input type="range" id="brushSize" min="1" max="10" value="5">
+        </div>
+
+        <!-- Canvas for drawing -->
+        <canvas id="whiteboard" width="800" height="600"></canvas>
+    </div>
+
+    <footer>
+        <p>Created for online teaching and collaboration.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
