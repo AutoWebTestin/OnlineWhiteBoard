@@ -15,6 +15,12 @@ let currentTool = 'pen';  // 'pen' or 'eraser'
 let color = '#000000';
 let size = 5;
 
+// Set up initial canvas state
+canvas.width = 800;  // Set canvas width
+canvas.height = 600;  // Set canvas height
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+
 // Event listeners for tools
 penTool.addEventListener('click', () => currentTool = 'pen');
 eraserTool.addEventListener('click', () => currentTool = 'eraser');
@@ -47,22 +53,16 @@ function draw(event) {
     if (!drawing) return;
 
     ctx.lineWidth = size;
-    ctx.lineCap = 'round';
+    ctx.strokeStyle = currentTool === 'pen' ? color : '#ffffff'; // Eraser uses white color
 
-    if (currentTool === 'pen') {
-        ctx.strokeStyle = color;
-        ctx.lineTo(event.offsetX, event.offsetY);
-        ctx.stroke();
-    } else if (currentTool === 'eraser') {
-        ctx.strokeStyle = '#fff';
-        ctx.lineTo(event.offsetX, event.offsetY);
-        ctx.stroke();
-    }
+    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.stroke();
 }
 
 // Stop drawing
 function stopDrawing() {
     drawing = false;
+    ctx.beginPath();  // To prevent drawing lines from previous points
 }
 
 // Clear the canvas
